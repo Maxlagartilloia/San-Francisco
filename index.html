@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parroquia Católica San Francisco de Asís - Shushufindi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+        }
+        .tau-cross {
+            color: #5D4037; /* Marrón Franciscano */
+        }
+        .bg-franciscan {
+            background-color: #5D4037;
+        }
+        .text-franciscan {
+            color: #5D4037;
+        }
+        .hero-pattern {
+            /* Imagen solemne y limpia */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        /* Animación suave */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fadeInUp 1s ease-out both;
+        }
+        .shadow-text {
+            text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 flex flex-col min-h-screen">
+
+    <!-- Navegación -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <!-- Logo / Nombre -->
+                    <a href="#inicio" class="flex items-center space-x-2">
+                        <span class="text-3xl tau-cross"><i class="fas fa-cross"></i></span>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-xl text-gray-800 leading-tight">Parroquia San Francisco de Asís</span>
+                            <span class="text-xs text-gray-500 uppercase tracking-wider">Shushufindi</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Menú Escritorio -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-franciscan transition font-medium">Inicio</a>
+                    <a href="#este-mes" class="text-gray-600 hover:text-franciscan transition font-medium">Este mes</a>
+                    <a href="#horarios" class="text-gray-600 hover:text-franciscan transition font-medium">Horarios</a>
+                    <a href="#servicios" class="text-gray-600 hover:text-franciscan transition font-medium">Vida parroquial</a>
+                    <a href="#historia" class="text-gray-600 hover:text-franciscan transition font-medium">Nuestra Historia</a>
+                    <a href="#contacto" class="bg-franciscan text-white px-5 py-2 rounded-full hover:bg-stone-700 transition shadow-lg">Contáctanos</a>
+                </div>
+
+                <!-- Botón Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-franciscan focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil (Oculto por defecto) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <a href="#inicio" class="block px-4 py-3 text-gray-700 hover:bg-stone-100">Inicio</a>
+            <a href="#este-mes" class="block px-4 py-3 text-gray-700 hover:bg-stone-100">Este mes</a>
+            <a href="#horarios" class="block px-4 py-3 text-gray-700 hover:bg-stone-100">Horarios</a>
+            <a href="#servicios" class="block px-4 py-3 text-gray-700 hover:bg-stone-100">Vida parroquial</a>
+            <a href="#historia" class="block px-4 py-3 text-gray-700 hover:bg-stone-100">Historia</a>
+            <a href="#contacto" class="block px-4 py-3 text-franciscan font-bold hover:bg-stone-100">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="hero-pattern h-screen flex items-center justify-center text-center px-4">
+        <div class="max-w-3xl mx-auto text-white animate-fade-in">
+            <p class="text-xl md:text-2xl mb-2 font-light italic">
+                "Señor, haz de mí un instrumento de tu paz"
+            </p>
+
+            <!-- Tiempo litúrgico dinámico -->
+            <span id="badge-tiempo-liturgico" class="inline-block bg-white/10 border border-white/30 rounded-full px-4 py-1 text-sm tracking-wide mb-4">
+                <!-- Se llena con JS -->
+            </span>
+
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 shadow-text">
+                Bienvenidos a la Parroquia Católica San Francisco de Asís
+            </h1>
+            <p class="text-lg mb-8 text-stone-200">
+                Una comunidad de fe, esperanza y caridad en el corazón de Shushufindi.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#horarios" class="bg-white text-franciscan px-8 py-3 rounded-full font-bold hover:bg-stone-100 transition shadow-lg transform hover:scale-105">
+                    Ver Horarios de Misa
+                </a>
+                <a href="#contacto" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white/10 transition">
+                    Cómo llegar
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección ESTE MES EN LA PARROQUIA (Dinámica) -->
+    <section id="este-mes" class="py-16 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-franciscan font-bold tracking-widest uppercase text-sm">Agenda pastoral</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">Este mes en la parroquia</h2>
+                <p id="mes-nombre" class="mt-2 text-sm uppercase tracking-wide text-gray-500">
+                    <!-- Mes actual (JS) -->
+                </p>
+                <div class="w-24 h-1 bg-franciscan mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Cita bíblica + Intención del mes -->
+            <div class="grid md:grid-cols-2 gap-8 mb-10">
+                <div class="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
+                    <h3 class="text-xl font-bold mb-3 text-franciscan">Cita bíblica del mes</h3>
+                    <p id="mes-cita" class="italic text-gray-700">
+                        <!-- Cita (JS) -->
+                    </p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
+                    <h3 class="text-xl font-bold mb-3 text-franciscan">Intención pastoral del mes</h3>
+                    <p id="mes-intencion" class="text-gray-700">
+                        <!-- Intención (JS) -->
+                    </p>
+                </div>
+            </div>
+
+            <!-- Actividades, Sacramentos, Avisos -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Actividades -->
+                <div class="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-calendar-day text-franciscan"></i> Actividades del mes
+                    </h3>
+                    <ul id="mes-actividades" class="space-y-3 text-sm text-gray-700">
+                        <!-- Lista de actividades (JS) -->
+                    </ul>
+                </div>
+
+                <!-- Sacramentos -->
+                <div class="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-droplet text-franciscan"></i> Vida sacramental
+                    </h3>
+                    <ul id="mes-sacramentos" class="space-y-3 text-sm text-gray-700">
+                        <!-- Info sacramentos (JS) -->
+                    </ul>
+                </div>
+
+                <!-- Avisos -->
+                <div class="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-bullhorn text-franciscan"></i> Avisos importantes
+                    </h3>
+                    <ul id="mes-avisos" class="space-y-3 text-sm text-gray-700">
+                        <!-- Avisos (JS) -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Nota de actualización -->
+            <p class="mt-8 text-xs text-center text-gray-500">
+                <strong>Nota para el equipo parroquial:</strong> esta sección se actualiza cambiando el objeto
+                <code>parroquiaMes</code> en el script al final de la página (no es necesario modificar todo el diseño).
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección de Horarios -->
+    <section id="horarios" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-franciscan font-bold tracking-widest uppercase text-sm">Eucaristía</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">Horarios de Misa</h2>
+                <div class="w-24 h-1 bg-franciscan mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Lunes a Viernes -->
+                <div class="bg-stone-50 p-8 rounded-2xl shadow-sm border border-stone-100 hover:shadow-md transition text-center">
+                    <div class="w-16 h-16 bg-franciscan/10 text-franciscan rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="far fa-calendar-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Lunes a Viernes</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex justify-center items-center"><span class="font-semibold mr-2">18:30</span> Santo Rosario</li>
+                        <li class="flex justify-center items-center"><span class="font-semibold mr-2">19:00</span> Santa Misa</li>
+                    </ul>
+                </div>
+
+                <!-- Domingo -->
+                <div class="bg-franciscan text-white p-8 rounded-2xl shadow-lg transform md:-translate-y-4 text-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full"></div>
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 relative z-10">
+                        <i class="fas fa-church text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 relative z-10">Domingo (Día del Señor)</h3>
+                    <ul class="space-y-3 text-stone-100 relative z-10">
+                        <li><span class="font-bold">07:00</span> - Misa Matutina</li>
+                        <li><span class="font-bold">09:00</span> - Misa de Niños</li>
+                        <li><span class="font-bold">11:00</span> - Misa Mayor</li>
+                        <li><span class="font-bold">19:00</span> - Misa Vespertina</li>
+                    </ul>
+                </div>
+
+                <!-- Sábados -->
+                <div class="bg-stone-50 p-8 rounded-2xl shadow-sm border border-stone-100 hover:shadow-md transition text-center">
+                    <div class="w-16 h-16 bg-franciscan/10 text-franciscan rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="far fa-clock text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Sábados</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex justify-center items-center"><span class="font-semibold mr-2">19:00</span> Misa de Vísperas</li>
+                        <li class="text-sm italic mt-4 text-stone-500">Confesiones disponibles 30 min antes de cada misa.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros / Frases -->
+    <section id="historia" class="py-16 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1543791959-0265dfdf3775?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="San Francisco de Asís" class="rounded-lg shadow-xl w-full object-cover h-96">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Paz y Bien</h2>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                    Nuestra parroquia, bajo la protección de <strong>San Francisco de Asís</strong>, camina junto al pueblo de Shushufindi, fortaleciendo la fe, la esperanza y la caridad.
+                </p>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Somos una comunidad viva que busca imitar la sencillez, la pobreza evangélica y el amor por la creación de nuestro santo patrono. Aquí encontrarás un espacio para la oración, los sacramentos, la formación cristiana y el servicio a los más necesitados.
+                </p>
+                <div class="bg-white p-4 border-l-4 border-franciscan rounded-r-lg shadow-sm">
+                    <p class="italic text-gray-700">
+                        "Comienza haciendo lo que es necesario, después lo que es posible y de repente estarás haciendo lo imposible."
+                    </p>
+                    <p class="text-right text-sm font-bold text-franciscan mt-2">- San Francisco de Asís</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ministerios y Servicios -->
+    <section id="servicios" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Vida Parroquial</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Catequesis -->
+                <div class="text-center p-6 hover:bg-stone-50 rounded-xl transition cursor-pointer group">
+                    <div class="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-franciscan group-hover:text-white transition">
+                        <i class="fas fa-book-bible text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Catequesis</h4>
+                    <p class="text-sm text-gray-500">Preparación para sacramentos de iniciación cristiana.</p>
+                </div>
+                <!-- Cáritas -->
+                <div class="text-center p-6 hover:bg-stone-50 rounded-xl transition cursor-pointer group">
+                    <div class="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-franciscan group-hover:text-white transition">
+                        <i class="fas fa-hands-holding-heart text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Cáritas Parroquial</h4>
+                    <p class="text-sm text-gray-500">Ayuda fraterna a los más necesitados.</p>
+                </div>
+                <!-- Grupos Juveniles -->
+                <div class="text-center p-6 hover:bg-stone-50 rounded-xl transition cursor-pointer group">
+                    <div class="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-franciscan group-hover:text-white transition">
+                        <i class="fas fa-users text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Pastoral Juvenil</h4>
+                    <p class="text-sm text-gray-500">Espacios de encuentro, servicio y misión.</p>
+                </div>
+                <!-- Coro -->
+                <div class="text-center p-6 hover:bg-stone-50 rounded-xl transition cursor-pointer group">
+                    <div class="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-franciscan group-hover:text-white transition">
+                        <i class="fas fa-music text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Coro Parroquial</h4>
+                    <p class="text-sm text-gray-500">Música al servicio de la liturgia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto y Mapa -->
+    <section id="contacto" class="bg-stone-900 text-stone-300 py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-6">Visítanos</h2>
+                    <p class="mb-8">
+                        Estamos ubicados en el centro de Shushufindi. Nuestras puertas están abiertas para todos.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-map-marker-alt mt-1 text-franciscan"></i>
+                            <span>Av. Principal y Calle Secundaria (Frente al Parque Central), Shushufindi, Sucumbíos.</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-phone text-franciscan"></i>
+                            <span>(06) 284-0111</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-envelope text-franciscan"></i>
+                            <span>secretaria@parroquiasanfrancisco.ec</span>
+                        </div>
+                        <div class="flex items-center space-x-4 pt-4">
+                            <!-- Enlace a Facebook -->
+                            <a href="https://www.facebook.com/profile.php?id=100070371780860" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1877F2] transition text-white">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-600 transition text-white">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario de Contacto Simple -->
+                <div class="bg-white rounded-lg p-6 text-gray-800">
+                    <h3 class="text-xl font-bold mb-4">Déjanos un mensaje</h3>
+                    <form onsubmit="event.preventDefault(); alert('Gracias, su mensaje ha sido enviado.');">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-1">Nombre</label>
+                            <input type="text" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-franciscan focus:border-franciscan outline-none">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-1">Teléfono / Email</label>
+                            <input type="text" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-franciscan focus:border-franciscan outline-none">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-1">Mensaje o intención de Misa</label>
+                            <textarea rows="3" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-franciscan focus:border-franciscan outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-franciscan text-white font-bold py-2 rounded-md hover:bg-stone-800 transition">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-stone-500 py-6 text-center text-sm">
+        <p>&copy; 2025 Parroquia Católica San Francisco de Asís - Shushufindi, Sucumbíos.</p>
+        <p class="mt-1">Diseñado con <i class="fas fa-heart text-franciscan"></i> al servicio del Evangelio.</p>
+    </footer>
+
+    <!-- Script simple para menú móvil + "Base de datos" mensual -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        /**
+         * ==========================
+         *   BASE DE DATOS DEL MES
+         * ==========================
+         * PARA ACTUALIZAR CADA MES:
+         * 1. Cambia los textos de este objeto parroquiaMes.
+         * 2. Guarda el archivo.
+         * La web mostrará automáticamente la nueva información.
+         */
+        const parroquiaMes = {
+            mes: "Noviembre 2025",
+            tiempoLiturgico: "Tiempo Ordinario", // Ej: "Adviento", "Cuaresma", "Pascua", "Tiempo Ordinario"
+            citaBiblica: "«Den gracias al Señor porque es bueno, porque es eterna su misericordia» (Sal 107, 1).",
+            intencionMes: "Oramos de manera especial por las familias de nuestra parroquia, para que vivan unidas en la fe, la esperanza y el amor.",
+            actividades: [
+                {
+                    fecha: "Todos los lunes - 19h30",
+                    titulo: "Adoración al Santísimo",
+                    descripcion: "Hora santa de adoración eucarística después de la misa."
+                },
+                {
+                    fecha: "Sábados - 09h00",
+                    titulo: "Catequesis de Primera Comunión",
+                    descripcion: "Formación para niños y niñas que se preparan para recibir la Eucaristía."
+                },
+                {
+                    fecha: "Último viernes del mes - 19h00",
+                    titulo: "Eucaristía por los enfermos",
+                    descripcion: "Santa Misa y unción para enfermos y adultos mayores (según disposición del párroco)."
+                }
+            ],
+            sacramentos: {
+                bautismos: "Bautismos comunitarios el primer domingo de cada mes, después de la misa de 11h00. Inscripción en secretaría parroquial.",
+                matrimonios: "Agendar entrevista con el párroco con al menos 3 meses de anticipación. Cursos prematrimoniales según calendario parroquial.",
+                confesiones: "Media hora antes de cada misa y los viernes desde las 18h00.",
+                primerasComuniones: "Catequesis los sábados a las 09h00. Más información en la oficina parroquial.",
+                confirmaciones: "Catequesis juvenil los viernes a las 19h30. Grupos organizados por edades."
+            },
+            avisos: [
+                "Te invitamos a traer tu Biblia a las misas de los domingos.",
+                "Cáritas parroquial recibe donaciones de víveres no perecibles durante todo el mes.",
+                "Sigue nuestras redes sociales para estar al tanto de los avisos parroquiales."
+            ]
+        };
+
+        // Render de la información mensual en el DOM
+        function renderMes(data) {
+            // Hero: tiempo litúrgico
+            const badgeTiempo = document.getElementById('badge-tiempo-liturgico');
+            if (badgeTiempo) {
+                badgeTiempo.textContent = "Tiempo litúrgico: " + data.tiempoLiturgico;
+            }
+
+            // Título de mes
+            const mesNombreEl = document.getElementById('mes-nombre');
+            if (mesNombreEl) {
+                mesNombreEl.textContent = data.mes;
+            }
+
+            // Cita bíblica
+            const citaEl = document.getElementById('mes-cita');
+            if (citaEl) {
+                citaEl.textContent = data.citaBiblica;
+            }
+
+            // Intención del mes
+            const intencionEl = document.getElementById('mes-intencion');
+            if (intencionEl) {
+                intencionEl.textContent = data.intencionMes;
+            }
+
+            // Actividades
+            const actividadesEl = document.getElementById('mes-actividades');
+            if (actividadesEl) {
+                actividadesEl.innerHTML = "";
+                if (data.actividades && data.actividades.length > 0) {
+                    data.actividades.forEach(act => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                            <p class="font-semibold text-franciscan">${act.fecha}</p>
+                            <p class="font-semibold">${act.titulo}</p>
+                            <p class="text-gray-600">${act.descripcion}</p>
+                        `;
+                        actividadesEl.appendChild(li);
+                    });
+                } else {
+                    actividadesEl.innerHTML = "<li>No hay actividades registradas para este mes.</li>";
+                }
+            }
+
+            // Sacramentos
+            const sacramentosEl = document.getElementById('mes-sacramentos');
+            if (sacramentosEl) {
+                sacramentosEl.innerHTML = "";
+
+                const s = data.sacramentos || {};
+                const items = [
+                    { nombre: "Bautismos", valor: s.bautismos },
+                    { nombre: "Matrimonios", valor: s.matrimonios },
+                    { nombre: "Confesiones", valor: s.confesiones },
+                    { nombre: "Primeras Comuniones", valor: s.primerasComuniones },
+                    { nombre: "Confirmaciones", valor: s.confirmaciones }
+                ];
+
+                items.forEach(item => {
+                    if (item.valor) {
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                            <p class="font-semibold text-franciscan">${item.nombre}</p>
+                            <p class="text-gray-600">${item.valor}</p>
+                        `;
+                        sacramentosEl.appendChild(li);
+                    }
+                });
+            }
+
+            // Avisos
+            const avisosEl = document.getElementById('mes-avisos');
+            if (avisosEl) {
+                avisosEl.innerHTML = "";
+                if (data.avisos && data.avisos.length > 0) {
+                    data.avisos.forEach(aviso => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                            <p class="flex items-start gap-2">
+                                <span class="mt-1 text-franciscan">
+                                    <i class="fas fa-circle text-[8px]"></i>
+                                </span>
+                                <span>${aviso}</span>
+                            </p>
+                        `;
+                        avisosEl.appendChild(li);
+                    });
+                } else {
+                    avisosEl.innerHTML = "<li>No hay avisos registrados para este mes.</li>";
+                }
+            }
+        }
+
+        // Inicializar contenido del mes
+        renderMes(parroquiaMes);
+    </script>
+</body>
+</html>
